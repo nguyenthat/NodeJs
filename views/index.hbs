@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+ <html> 
+    <head>
+<title> Node Js</title>
+<meta charset="UTF-8">
+    </head>
+<html>
+    <body>
+{{#each users as | user |}}
+<div>
+    <img src="/profilepics/{{user.username}}_sm.jpg" alt="">
+    <a href="/{{user.username}}">user.name.full</a>
+</div>
+{{/each}}
+    </body>
+</html> 
