@@ -57,8 +57,8 @@ function getUserFilePath(userName){
 app.put('/:username',(req,res)=>{
     var username = req.params.username
     var user = getUser(username)
-
-    saveUser(username,req.body)
+     user.location= req.body
+    saveUser(username,user)
     res.end()
 })
 function getUser(userName)
@@ -80,5 +80,10 @@ function saveUser (username, data){
 function getUserFilePath(userName){
     return path.join(__dirname,'users',userName) + '.json';
 }
+app.delete('/:username',function(req,res){
+    var fp = getUserFilePath(req.params.username)
+    fs.unlinkSync(fp)
+    res.sendStatus(200)
+})
 
  app.listen(3000,()=>{console.log("app running at port 3000");}) // host cong 3000 de chay
